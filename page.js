@@ -59,10 +59,6 @@ module.exports = {
         //return supportivePlanCard;
       
     },
-    /*isSupportivePlanSelected: async function() {
-        const supportivePlanCardActive = await $(this.supportivePlanCardActive);
-        return supportivePlanCardActive.isDisplayed();
-    },*/
     fillPhoneNumber: async function(phoneNumber) {
         const phoneNumberButton = await $(this.phoneNumberButton);
         await phoneNumberButton.waitForDisplayed();
@@ -75,12 +71,6 @@ module.exports = {
     },
     fillMessageToTheDriver: async function(message) {
         const messageToTheDriverField = await $(this.messageToTheDriverField);
-       /* await messageToTheDriverLabel.waitForDisplayed();
-        await messageToTheDriverLabel.waitForClickable();
-        await messageToTheDriverLabel.click();
-        
-        const messageToTheDriverField = await $(this.messageToTheDriverField);
-        await messageToTheDriverField.waitForDisplayed();*/
         await messageToTheDriverField.setValue(message);
     },
     addCard: async function(cardNumber, cvvCode) {
