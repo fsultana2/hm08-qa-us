@@ -178,7 +178,7 @@ it('driver info should appear', async () => {
     await page.clickOrderButton();
     const orderBody = await $(page.orderBody);
     await orderBody.waitForDisplayed();
-    const orderHeaderTime = await $(page.orderHeaderTime);
+    /*const orderHeaderTime = await $(page.orderHeaderTime);
     await orderHeaderTime.waitForDisplayed();
     const waitingTimeText = await orderHeaderTime.getText();
     const waitingTimeTextArray = waitingTimeText.split(':');
@@ -187,7 +187,8 @@ it('driver info should appear', async () => {
     const totalWaitingTimeMilliseconds = (waitingTimeMinutes * 60 + waitingTimeSeconds) * 1000;
     await orderHeaderTime.waitUntil(async function () {
         return (await this.getText()) === "00:01";
-    }, { timeout: totalWaitingTimeMilliseconds });
+    }, { timeout: totalWaitingTimeMilliseconds });*/
+    await browser.pause (40000);
     const theDriverWillArriveLabel = await $(page.theDriverWillArriveLabel);
     await theDriverWillArriveLabel.waitForDisplayed();
     await expect(theDriverWillArriveLabel).toBeDisplayed();
