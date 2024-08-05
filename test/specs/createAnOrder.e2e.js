@@ -21,10 +21,6 @@ describe('Create an order', () =>
         await page.fillAddresses(fromAddress, toAddress);
         await page.callATaxi();
         await page.selectSupportivePlan();
-        /*if (!(await page.isSupportivePlanSelected())) {
-            await page.selectSupportivePlan();
-        }
-        await expect(await page.isSupportivePlanSelected()).toBe(true);*/
     });
 
 
@@ -73,13 +69,8 @@ describe('Create an order', () =>
         await page.callATaxi();
         await page.selectSupportivePlan();
         await page.selectBlanketsAndHandkerchief();
-           /* console.log('Ordering a Blanket and handkerchiefs');
-        if (!(await page.isBlanketAndHandkerchiefsSwitchInputChecked())) {
-            await page.selectBlanketsAndHandkerchief();
-        }*/
         await expect(await page.isBlanketAndHandkerchiefsSwitchInputChecked()).toBe(true);
 
-  
     });
 
     it('should add two ice creams', async () => {
@@ -89,32 +80,12 @@ describe('Create an order', () =>
         await page.addIceCream(iceCreamCount);
 
         await expect(await page.getIceCreamCount()).toBe(iceCreamCount);
-        //await page.selectSupportivePlan();
-        //await expect(await page.getIceCreamCount()).toBe(iceCreamCount);
-
-        /*if (!(await page.isSupportivePlanSelected())) {
-            await page.selectSupportivePlan();
-        }
-
-        console.log('Ordering 2 Ice creams');
-        if (await page.getIceCreamCount() === 0) {
-            await page.addIceCream(iceCreamCount);
-        }*/
-
-       /* await expect(await page.getIceCreamCount()).toBe(iceCreamCount);*/
     });
 
     it('car search modal should appear', async () => {
         await browser.url(`/`);
         await page.fillAddresses(fromAddress, toAddress);
         await page.callATaxi();
-        //await page.selectSupportivePlan();
-
-
-        /*if (!(await page.isSupportivePlanSelected())) {
-            await page.selectSupportivePlan();
-        }*/
-
         const phoneNumber = helper.getPhoneNumber("+1");
         await page.submitPhoneNumber(phoneNumber);
         await page.addCard(cardNumber, cvvCode);
@@ -126,43 +97,8 @@ describe('Create an order', () =>
         const orderBody = await $(page.orderBody);
         await orderBody.waitForDisplayed();
         await expect(orderBody).toBeDisplayed();
-
-
-
-       /* if (!(await page.isBlanketAndHandkerchiefsSwitchInputChecked())) {
-            await page.selectBlanketsAndHandkerchief();
-        }
-
-        if (await page.getIceCreamCount() === 0) {
-            await page.addIceCream(iceCreamCount);
-        }
-
-        console.log('Clicking order button');
-        await page.clickOrderButton();*/
-
-        
     });
-    /*it('driver info should appear', async () => {
-        await browser.url(`/`);
-        await page.fillAddresses(fromAddress, toAddress);
-        await page.callATaxi();
-        const phoneNumber = helper.getPhoneNumber("+1");
-        await page.submitPhoneNumber(phoneNumber);
-        await page.fillMessageToTheDriver(message);
-        await page.clickOrderButton();
-        /*console.log("Order button clicked");
-
-// All actions completed, now check orderBody
-const orderBody = await $(page.orderBody);
-console.log("Checking if orderBody is displayed...");
-await orderBody.waitForDisplayed({ timeout: 30000 });
-console.log("OrderBody is displayed");
-        await theDriverWillArriveLabel.waitForDisplayed();
-        await expect(theDriverWillArriveLabel).toBeDisplayed();*/
-   // })
-
- 
-//})
+    
 it('driver info should appear', async () => {
     await browser.url(`/`);
     await page.fillAddresses(fromAddress, toAddress);
@@ -178,16 +114,6 @@ it('driver info should appear', async () => {
     await page.clickOrderButton();
     const orderBody = await $(page.orderBody);
     await orderBody.waitForDisplayed();
-    /*const orderHeaderTime = await $(page.orderHeaderTime);
-    await orderHeaderTime.waitForDisplayed();
-    const waitingTimeText = await orderHeaderTime.getText();
-    const waitingTimeTextArray = waitingTimeText.split(':');
-    const waitingTimeMinutes = Number(waitingTimeTextArray[0]);
-    const waitingTimeSeconds = Number(waitingTimeTextArray[1]);
-    const totalWaitingTimeMilliseconds = (waitingTimeMinutes * 60 + waitingTimeSeconds) * 1000;
-    await orderHeaderTime.waitUntil(async function () {
-        return (await this.getText()) === "00:01";
-    }, { timeout: totalWaitingTimeMilliseconds });*/
     await browser.pause (40000);
     const theDriverWillArriveLabel = await $(page.theDriverWillArriveLabel);
     await theDriverWillArriveLabel.waitForDisplayed();
