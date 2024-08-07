@@ -22,6 +22,8 @@ describe('Create an order', () =>
         await page.callATaxi();
         await page.selectSupportivePlan();
         await expect(await $(page.supportiveButton)).toHaveElementClass("active");
+
+
     });
     it('should fill phone number', async () => {
         await browser.url(`/`);
@@ -80,7 +82,11 @@ describe('Create an order', () =>
         const orderBody = await $(page.orderBody);
         await orderBody.waitForDisplayed();
         await expect(orderBody).toBeDisplayed();
+
     });  
+
+    });
+    
 it('driver info should appear', async () => {
     await browser.url(`/`);
     await page.fillAddresses(fromAddress, toAddress);
