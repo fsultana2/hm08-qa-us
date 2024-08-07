@@ -9,10 +9,10 @@
         Check that the user can enter a valid phone number.
     - Adding a Credit Card
         Test the process of adding a credit card.
-        Note: The "link" button becomes active only after the CVV field loses focus. Simulate the user pressing TAB or 
+        Note: The "link" button becomes active only after the CVV field loses focus. Simulate the user pressing TAB                or 
         clicking elsewhere on the screen to change focus.
     - Writing a Message for the Driver
-    Confirm that the user can write and submit a message for the driver.
+        Confirm that the user can write and submit a message for the driver.
     - Ordering a Blanket and Handkerchiefs
         Ensure that the user can order a blanket and handkerchiefs.
         Note: Use two selectors—one to click and one to verify that the state changed.
@@ -31,29 +31,31 @@ The tests are implemented using Node.js and WebDriverIO and are located in the c
 # Linking GitHub Account and Setting Up Local Repository
 To begin working on Project 7, follow these steps to link your GitHub account and clone the repository to your local computer.
     Step 1: Link Your GitHub Account
-   	Navigate to the Project 7 description page on TripleTen.
-  	 Click the "Link GitHub account" button in the the top of the page.
+   	     Navigate to the Project 7 description page on TripleTen.
+  	     Click the "Link GitHub account" button in the the top of the page.
   Step 2: Clone the Repository Locally
-   	Open  Terminal (On macOS  use the terminal application.)
-   	Create a Directory for Projects_
-      	 Navigate to the home directory:  
+   	    Open  Terminal (On macOS  use the terminal application.)
+   	    Create a Directory for Projects_
+      	Navigate to the home directory:  
+       
        	cd ~
+        
   Step 3:Create a new directory named projects and navigate into it:
-      	 mkdir projects
+      	mkdir projects
        	cd projects
 
 Step 4: Clone the Repository:
-   	For SSH authentication users, enter the following command, replacing username with     GitHub username:
+   	    For SSH authentication users, enter the following command, replacing username with     GitHub username:
 
 git@github.com:fsultana2/hm08-qa-us.git
 Or, For HTTPS authentication users,:
 https://github.com/fsultana2/hm08-qa-us.git
 
 Step 5: Navigate into your project directory:
-   cd hm08-qa-us.
+       cd hm08-qa-us.
 
 Step 6: Install the necessary dependencies:
-   npm install
+       npm install
 
 
 # Running the Tests
@@ -65,9 +67,9 @@ Step 6: Install the necessary dependencies:
 
 
 # Run the Urban Routes testing environment
- copy the URL, and update the baseUrl variable in wdio.conf.js.
+     copy the URL, and update the baseUrl variable in wdio.conf.js.
    
-    npm run wdio
+     npm run wdio
 
 # Known Issues
     Some users may encounter an error related to chromedriver. To execute   
@@ -151,6 +153,7 @@ Step 6: Install the necessary dependencies:
         await expect(await $(page.fromField)).toHaveValue(fromAddress);
         await expect(await $(page.toField)).toHaveValue(toAddress);
         });
+        
         - Navigates to the home page.
         - Fills the pick-up and drop-off addresses.
         - Verifies that the addresses are correctly entered.
@@ -164,6 +167,7 @@ Step 6: Install the necessary dependencies:
         await page.selectSupportivePlan();
         await expect(await $(page.supportiveButton)).toHaveElementClass("active");
         });
+        
         - Fills addresses and calls a taxi.
         - Selects the supportive plan and verifies that it is selected.
 
@@ -177,6 +181,7 @@ Step 6: Install the necessary dependencies:
         await page.submitPhoneNumber(phoneNumber);
         await expect(await helper.getElementByText(phoneNumber)).toBeExisting();
         });
+        
         - Fills addresses and calls a taxi.
         - Submits a phone number and verifies its existence.
 
@@ -191,6 +196,7 @@ Step 6: Install the necessary dependencies:
         await cardRow.waitForDisplayed();
         await expect(cardRow).toBeDisplayed();
         });
+        
         - Adds a credit card and verifies that the card row is displayed.
 
     5. Writing a Message to the Driver
@@ -204,6 +210,7 @@ Step 6: Install the necessary dependencies:
         await messageToTheDriverField.waitForDisplayed();
         await expect(await messageToTheDriverField.getValue()).toBe(message);
         });
+        
         - Fills addresses, calls a taxi, writes a message to the driver, and verifies the message.
 
     6. Ordering a Blanket and Handkerchiefs
@@ -216,6 +223,7 @@ Step 6: Install the necessary dependencies:
         await page.selectBlanketsAndHandkerchief();
         await expect(await page.isBlanketAndHandkerchiefsSwitchInputChecked()).toBe(true);
         });
+        
         - Selects the supportive plan, orders a blanket and handkerchiefs, and verifies the selection.
 
     7. Ordering Two Ice Creams
@@ -227,6 +235,7 @@ Step 6: Install the necessary dependencies:
         await page.addIceCream(iceCreamCount);
         await expect(await page.getIceCreamCount()).toBe(iceCreamCount);
         });
+        
         - Orders two ice creams and verifies the count.
 
     8. Car Search Modal Appearance
@@ -247,6 +256,7 @@ Step 6: Install the necessary dependencies:
         await orderBody.waitForDisplayed();
         await expect(orderBody).toBeDisplayed();
         });
+        
         - Completes the order process and verifies the appearance of the car search modal.
 
     9. Driver Info Appearance
@@ -270,5 +280,6 @@ Step 6: Install the necessary dependencies:
         await theDriverWillArriveLabel.waitForDisplayed();
         await expect(theDriverWillArriveLabel).toBeDisplayed();
         });
+        
         - Completes the order process and verifies that the driver’s info appears in the modal after some   time.
 
