@@ -20,8 +20,8 @@ module.exports = {
     nextButton: 'button=Next',
     confirmButton: 'button=Confirm',
     paymentMethodButton: 'div.pp-text=Payment method',
-    //supportivePlanCard: '//div[@class="tcard"]//div[starts-with(text(), "Supportive")]',
     supportivePlanCard: 'div=Supportive',
+    supportiveButton: '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[1]/div[5]',
     supportivePlanCardActive: '//div[@class="tcard active"]//div[starts-with(text(), "Supportive")]',
     submitButton: '//button[starts-with(text(), "Link")]',
     addIceCreamButton: '//div[starts-with(text(), "Ice cream")]/..//div[@class="r-counter"]//div[@class="counter"]//div[@class="counter-plus"]',
@@ -89,9 +89,7 @@ module.exports = {
         const cvvCodeField = await $(this.cvvCodeField);
         await cvvCodeField.waitForDisplayed();
         await cvvCodeField.setValue(cvvCode);
-
         await browser.keys(['Tab']);
-
         const submitButton = await $(this.submitButton);
         await submitButton.waitForDisplayed();
         await submitButton.click();
